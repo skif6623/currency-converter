@@ -1,4 +1,6 @@
 <h1 class="header">{{ title | uppercase }}</h1>
 
-<app-header [ideas]="ideas[0]"></app-header>
-<app-header [ideas]="ideas[1]"></app-header>
+<app-header
+  *ngFor="let ideas of ideas; let i = index"
+  [ideas]="ideas"
+></app-header>

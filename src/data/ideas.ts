@@ -16,7 +16,16 @@ export const ideas: IIdea[] = [
     participants: 1,
     price: 0,
     link: '',
-    key: '3491470',
+    key: '3491471',
+    accessibility: 0,
+  },
+  {
+    activity: "Let's cooking",
+    type: 'cooking',
+    participants: 1,
+    price: 0,
+    link: '',
+    key: '3491472',
     accessibility: 0,
   },
 ];
