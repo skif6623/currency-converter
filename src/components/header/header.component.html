@@ -1,0 +1,9 @@
+<h2>{{ ideas.type }}</h2>
+
+<button (click)="description = !description">
+  {{ description ? "Hide" : "Show" }} Description
+</button>
+
+<div *ngIf="description">
+  <p>{{ ideas.activity }}</p>
+</div>
