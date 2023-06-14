@@ -8,6 +8,5 @@ import { IIdea } from 'src/models/ideas';
 })
 export class HeaderComponent {
   @Input() ideas: IIdea;
-
   description = false;
 }
