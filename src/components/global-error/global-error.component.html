@@ -1,3 +1,21 @@
-<div [style]="{ backgroundColor: 'red' }">
-  {{ errorService.error$ | async }}
+<div
+  *ngIf="errorService.error$ | async as error"
+  [style]="{ backgroundColor: 'red', position: 'relative' }"
+>
+  <!-- {{ errorService.error$ | async }} -->
+  {{ error }}
+  <button
+    [style]="{
+      color: 'green',
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      backgroundColor: 'transparent',
+      border: 'none',
+      fontSize: '20px'
+    }"
+    (click)="errorService.clear()"
+  >
+    &times;
+  </button>
 </div>

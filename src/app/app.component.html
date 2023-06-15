@@ -2,9 +2,19 @@
 
 <h1 class="header">{{ title | uppercase }}</h1>
 
+<input type="text" placeholder="Ideas filter" [(ngModel)]="term" />
+
 <p *ngIf="loading">Loading...</p>
 
-<app-header
-  *ngFor="let ideas of ideas$ | async; let i = index"
-  [ideas]="ideas"
-></app-header>
+<div *ngIf="ideas$ | async as ownIdeas">
+  <app-header
+    *ngFor="let ideas of ownIdeas | filterIdeas : term; let i = index"
+    [ideas]="ideas"
+  ></app-header>
+</div>
+
+<app-modal title="Create new idea" *ngIf="modalService.isVisible$ | async">
+  <app-create-idea></app-create-idea>
+</app-modal>
+
+<button (click)="modalService.open()">Modal</button>

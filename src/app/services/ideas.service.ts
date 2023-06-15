@@ -5,7 +5,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { IIdea } from 'src/models/ideas';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, retry, throwError } from 'rxjs';
 import { ErrorService } from './error.service';
 
 @Injectable({
@@ -22,7 +22,10 @@ export class IdeasService {
           fromObject: { page: 1, limit: 3 },
         }),
       })
-      .pipe(catchError(this.errorHandler.bind(this)));
+      .pipe(
+        // retry(2), при невдалому запиті відправляє повторно
+        catchError(this.errorHandler.bind(this))
+      );
   }
 
   private errorHandler(error: HttpErrorResponse) {

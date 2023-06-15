@@ -1,0 +1,9 @@
+<form [formGroup]="ideaForm" (ngSubmit)="submit()">
+  <input
+    type="text"
+    placeholder="Idea name"
+    [style]="{ width: '100%', heigth: '40px' }"
+    formControlName="title"
+  />
+  <button type="submit" [style]="{ padding: '10px 15px' }">Create</button>
+</form>

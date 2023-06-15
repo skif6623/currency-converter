@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IIdea } from 'src/models/ideas';
 import { IdeasService } from './services/ideas.service';
 import { Observable, tap } from 'rxjs';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,12 @@ export class AppComponent implements OnInit {
   // ideas: IIdea[] = [];
   loading = false;
   ideas$: Observable<IIdea[]>;
+  term = '';
 
-  constructor(private IdeasService: IdeasService) {}
+  constructor(
+    private IdeasService: IdeasService,
+    public modalService: ModalService
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
