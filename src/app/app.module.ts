@@ -7,14 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { ConverterComponent } from './components/converter/converter.component';
-import { FieldComponent } from './components/field/field.component';
-
+import { FormComponent } from './components/form/form.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ConverterComponent,
-    FieldComponent,
+    FormComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],

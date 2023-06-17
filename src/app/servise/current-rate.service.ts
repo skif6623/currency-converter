@@ -19,9 +19,13 @@ export class CurrentRateService {
     return forkJoin([request1, request2]);
   }
 
-  getCurrencyRate(currency: string): Observable<any> {
-    return this.http.get<any>(
-      `https://v6.exchangerate-api.com/v6/b79adbb765e80081c17a09ac/latest/${currency}`
-    );
+  getCurrencyRate(from: string, to: string): Observable<ILatestRate[]> {
+    const url1 = `https://api.exchangerate.host/convert?from=${from}&to=${to}`;
+    const url2 = `https://api.exchangerate.host/convert?from=${to}&to=${from}`;
+
+    const request1 = this.http.get<ILatestRate>(url1);
+    const request2 = this.http.get<ILatestRate>(url2);
+
+    return forkJoin([request1, request2]);
   }
 }
