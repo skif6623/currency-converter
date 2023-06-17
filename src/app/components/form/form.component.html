@@ -1,0 +1,29 @@
+<form>
+  <input
+    name="from"
+    type="number"
+    placeholder="From"
+    [value]="fromInputValue"
+    [(ngModel)]="fromInputValue"
+    (input)="calcToInputValue()"
+  />
+  <select #c1 name="from" (change)="setfromCurrency(c1.value)">
+    <option value="USD" selected>USD</option>
+    <option value="EUR">EUR</option>
+    <option value="UAH">UAH</option>
+  </select>
+
+  <input
+    name="to"
+    type="number"
+    placeholder="To"
+    [value]="toInputValue"
+    [(ngModel)]="toInputValue"
+    (input)="calcFromInputValue()"
+  />
+  <select #c2 name="to" (change)="setToCurrency(c2.value)">
+    <option value="UAH" selected>UAH</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+  </select>
+</form>

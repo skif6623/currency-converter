@@ -1,20 +1,4 @@
-<app-global-error></app-global-error>
-
-<h1 class="header">{{ title | uppercase }}</h1>
-
-<input type="text" placeholder="Ideas filter" [(ngModel)]="term" />
-
-<p *ngIf="loading">Loading...</p>
-
-<div *ngIf="ideas$ | async as ownIdeas">
-  <app-header
-    *ngFor="let ideas of ownIdeas | filterIdeas : term; let i = index"
-    [ideas]="ideas"
-  ></app-header>
-</div>
-
-<app-modal title="Create new idea" *ngIf="modalService.isVisible$ | async">
-  <app-create-idea></app-create-idea>
-</app-modal>
-
-<button (click)="modalService.open()">Modal</button>
+<app-header [latestRate]="latestRate"></app-header>
+<app-converter title="Currency converter">
+  <app-form></app-form>
+</app-converter>

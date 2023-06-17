@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  padding: 10px;
+  background-color: red;
+}
+
+.rate_list {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
