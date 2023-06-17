@@ -54,7 +54,12 @@ export class FormComponent implements OnInit {
       .subscribe((res) => {
         this.calcToCurrency = res[0].result;
         this.calcFromCurrency = res[1].result;
-        this.calcToInputValue();
+        if (this.currentField === 'from') {
+          this.calcToInputValue();
+        }
+        if (this.currentField === 'to') {
+          this.calcFromInputValue();
+        }
       });
   }
 
@@ -65,11 +70,18 @@ export class FormComponent implements OnInit {
       .subscribe((res) => {
         this.calcToCurrency = res[0].result;
         this.calcFromCurrency = res[1].result;
+        if (this.currentField === 'to') {
+          this.calcFromInputValue();
+        }
+        if (this.currentField === 'from') {
+          this.calcToInputValue();
+        }
         this.calcToInputValue();
       });
   }
 
-  setCurrentField(a: number) {
-    console.log(a);
+  setCurrentField(focusedInput: string) {
+    this.currentField = focusedInput;
+    console.log(this.currentField);
   }
 }
