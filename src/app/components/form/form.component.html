@@ -8,6 +8,7 @@
       [value]="fromInputValue"
       [(ngModel)]="fromInputValue"
       (input)="calcToInputValue()"
+      (focus)="setCurrentField($event.target.value)"
     />
     <select
       class="formSelect"
@@ -22,7 +23,7 @@
   </label>
 
   <div class="transferWrapper">
-    <img class="transfer" src="/assets/images/arrows.png" alt="transfer" />
+    <img class="transfer" src="./assets/images/arrows.png" alt="transfer" />
   </div>
 
   <label class="formLabel">
@@ -34,6 +35,7 @@
       [value]="toInputValue"
       [(ngModel)]="toInputValue"
       (input)="calcFromInputValue()"
+      (focus)="setCurrentField()"
     />
     <select class="formSelect" #c2 name="to" (change)="setToCurrency(c2.value)">
       <option value="UAH" selected>UAH</option>

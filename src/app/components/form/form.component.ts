@@ -13,8 +13,10 @@ export class FormComponent implements OnInit {
   fromInputValue: number;
   toInputValue: number;
 
-  calcToCurrency: number;
   calcFromCurrency: number;
+  calcToCurrency: number;
+
+  currentField: string;
 
   constructor(private currentRate: CurrentRateService) {}
 
@@ -65,5 +67,9 @@ export class FormComponent implements OnInit {
         this.calcFromCurrency = res[1].result;
         this.calcToInputValue();
       });
+  }
+
+  setCurrentField(a: number) {
+    console.log(a);
   }
 }
