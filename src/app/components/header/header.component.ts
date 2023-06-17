@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IIdea } from 'src/models/ideas';
+import { IHeaderRate } from 'src/app/models/header-rate';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,5 @@ import { IIdea } from 'src/models/ideas';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() ideas: IIdea;
-  description = false;
+  @Input() latestRate: IHeaderRate;
 }
