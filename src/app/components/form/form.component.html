@@ -7,7 +7,7 @@
       placeholder="From"
       [value]="fromInputValue"
       [(ngModel)]="fromInputValue"
-      (input)="calcToInputValue()"
+      (input)="calcInputValue()"
       (focus)="setCurrentField('from')"
     />
     <select
@@ -34,7 +34,7 @@
       placeholder="To"
       [value]="toInputValue"
       [(ngModel)]="toInputValue"
-      (input)="calcFromInputValue()"
+      (input)="calcInputValue()"
       (focus)="setCurrentField('to')"
     />
     <select class="formSelect" #c2 name="to" (change)="setToCurrency(c2.value)">

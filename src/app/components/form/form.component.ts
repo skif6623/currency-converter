@@ -29,59 +29,46 @@ export class FormComponent implements OnInit {
       });
   }
 
-  calcToInputValue() {
+  calcInputValue() {
     if (this.fromInputValue === null) {
-      this.fromInputValue = 0;
-      this.toInputValue = 0;
+      this.resetInputs();
       return;
     }
-    this.toInputValue = this.fromInputValue * this.calcToCurrency;
-  }
-
-  calcFromInputValue() {
-    if (this.fromInputValue === null) {
-      this.fromInputValue = 0;
-      this.toInputValue = 0;
-      return;
+    if (this.currentField === 'from') {
+      this.toInputValue = this.fromInputValue * this.calcToCurrency;
+    } else {
+      this.fromInputValue = this.toInputValue * this.calcFromCurrency;
     }
-    this.fromInputValue = this.toInputValue * this.calcFromCurrency;
   }
 
   setfromCurrency(currencyType: string) {
     this.fromSelectorValue = currencyType;
-    this.currentRate
-      .getCurrencyRate(this.fromSelectorValue, this.toSelectorValue)
-      .subscribe((res) => {
-        this.calcToCurrency = res[0].result;
-        this.calcFromCurrency = res[1].result;
-        if (this.currentField === 'from') {
-          this.calcToInputValue();
-        }
-        if (this.currentField === 'to') {
-          this.calcFromInputValue();
-        }
-      });
+    this.refreshSelect();
   }
 
   setToCurrency(currencyType: string) {
     this.toSelectorValue = currencyType;
+    this.refreshSelect();
+  }
+
+  setCurrentField(focusedInput: string) {
+    this.currentField = focusedInput;
+  }
+
+  refreshSelect() {
     this.currentRate
       .getCurrencyRate(this.fromSelectorValue, this.toSelectorValue)
       .subscribe((res) => {
         this.calcToCurrency = res[0].result;
         this.calcFromCurrency = res[1].result;
-        if (this.currentField === 'to') {
-          this.calcFromInputValue();
-        }
-        if (this.currentField === 'from') {
-          this.calcToInputValue();
-        }
-        this.calcToInputValue();
+        this.currentField === 'from'
+          ? this.calcInputValue()
+          : this.calcInputValue();
       });
   }
 
-  setCurrentField(focusedInput: string) {
-    this.currentField = focusedInput;
-    console.log(this.currentField);
+  resetInputs() {
+    this.fromInputValue = 0;
+    this.toInputValue = 0;
   }
 }
